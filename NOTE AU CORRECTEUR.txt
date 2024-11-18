@@ -1,0 +1,15 @@
+MODIFICATIONS APPORTEES SUR LE JEU : 
+
+- le héro s'arrête quand aucune touche n'est pressée
+- Le sprite du héros ne bouge plus quand il s'arrête
+- Possibilité de bouger en diagonale avec un sprite cohérent
+- Augmentation de la fréquence des timers pour un jeu plus nerveux
+- Le héros s'arrête de bouger quand aucune touche n'est pressée
+- modification de la méthode getHitbox afin de pouvoir régler la hitbox du héros qui est de base mal dimensionnée
+- création d'un niveau
+- SoundEngine et musique
+- fin du mode plein écran quand on appuie sur echap
+- création du système de points de vie (PV)
+- ajout d'un boss avec sa hitbox
+- ajout d'un code pour afficher les hitboxs
+
