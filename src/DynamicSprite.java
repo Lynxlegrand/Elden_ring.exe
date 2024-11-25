@@ -6,11 +6,13 @@ import java.util.ArrayList;
 public class DynamicSprite extends SolidSprite {
     private Direction direction;
     public double speed;
-    private int timeBetweenFrame;
+    protected int timeBetweenFrame;
     private boolean isWalking;
-    private int spriteSheetNumberOfColumn;
+    protected int spriteSheetNumberOfColumn;
     protected int PV;
     protected boolean isLiving;
+    protected int range;
+    protected int attack;
 
     // Constructeurs
     public DynamicSprite(BufferedImage image, double x, double y, double width, double height) {
@@ -19,15 +21,21 @@ public class DynamicSprite extends SolidSprite {
         this.timeBetweenFrame = 100;
         this.isWalking = true;
         this.spriteSheetNumberOfColumn = 10;
-        this.direction = Direction.NORTH;
+        this.direction = Direction.SOUTH;
         this.PV = 100;
         this.isLiving = true;
+        this.range = 50;
+        this.attack = 25;
 
     }
 
     // Setters
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+    public void setCombat(int range, int attack) {
+        this.range = range;
+        this.attack = attack;
     }
 
     public void setPV(int PV) {
@@ -137,4 +145,14 @@ public class DynamicSprite extends SolidSprite {
             move();
         }
     }
+
+    protected double distance(DynamicSprite dynamicSprite){
+        return Math.sqrt(Math.pow(dynamicSprite.x - this.x,2)+Math.pow(dynamicSprite.y - this.y,2));
+    }
+    protected double distance(double x, double y){
+        return Math.sqrt(Math.pow(x - this.x,2)+Math.pow(y - this.y,2));
+    }
+
+
+
 }

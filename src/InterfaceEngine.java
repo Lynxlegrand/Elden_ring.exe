@@ -15,14 +15,6 @@ public class InterfaceEngine implements KeyListener {
         displayZoneFrame.addKeyListener(this);
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // Vérifie si la touche Échap est pressée
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            toggleFullscreenMode();
-        }
-    }
-
     private void toggleFullscreenMode() {
         if (displayZoneFrame.isUndecorated()) {
             displayZoneFrame.dispose(); // nécessaire pour appliquer le changement
@@ -32,6 +24,14 @@ public class InterfaceEngine implements KeyListener {
             displayZoneFrame.dispose();
             displayZoneFrame.setUndecorated(true);
             displayZoneFrame.setVisible(true);
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // Vérifie si la touche Échap est pressée
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            toggleFullscreenMode();
         }
     }
 

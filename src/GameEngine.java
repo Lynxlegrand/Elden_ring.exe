@@ -5,10 +5,10 @@ import java.util.Set;
 
 public class GameEngine implements Engine, KeyListener {
     private  DynamicSprite hero;
-    private  DynamicSprite boss;
+    protected  PNJ boss;
     private Set<Integer> pressedKeys = new HashSet<>();
 
-    public GameEngine(DynamicSprite hero, DynamicSprite boss) {
+    public GameEngine(DynamicSprite hero, PNJ boss) {
         this.hero = hero;
         this.boss = boss; // Initialisation du boss
     }
@@ -16,38 +16,47 @@ public class GameEngine implements Engine, KeyListener {
     @Override
     public void update() {
         //Code du héro
+        int slow = 3;
+        int fast = 6;
+        int speed = pressedKeys.contains(KeyEvent.VK_SHIFT) ? fast : slow; // Vitesse en fonction de Shift
         if (pressedKeys.contains(KeyEvent.VK_Z) && pressedKeys.contains(KeyEvent.VK_D)) {
-            hero.speed = 5;
+            hero.speed = speed;
             hero.setDirection(Direction.NORTHEAST);
         } else if (pressedKeys.contains(KeyEvent.VK_Z) && pressedKeys.contains(KeyEvent.VK_Q)) {
-            hero.speed = 5;
+            hero.speed = speed;
             hero.setDirection(Direction.NORTHWEST);
         } else if (pressedKeys.contains(KeyEvent.VK_S) && pressedKeys.contains(KeyEvent.VK_D)) {
-            hero.speed = 5;
+            hero.speed = speed;
             hero.setDirection(Direction.SOUTHEAST);
         } else if (pressedKeys.contains(KeyEvent.VK_S) && pressedKeys.contains(KeyEvent.VK_Q)) {
-            hero.speed = 5;
+            hero.speed = speed;
             hero.setDirection(Direction.SOUTHWEST);
         } else if (pressedKeys.contains(KeyEvent.VK_Z)) {
-            hero.speed = 5;
+            hero.speed = speed;
             hero.setDirection(Direction.NORTH);
         } else if (pressedKeys.contains(KeyEvent.VK_S)) {
-            hero.speed = 5;
+            hero.speed = speed;
             hero.setDirection(Direction.SOUTH);
         } else if (pressedKeys.contains(KeyEvent.VK_Q)) {
-            hero.speed = 5;
+            hero.speed = speed;
             hero.setDirection(Direction.WEST);
         } else if (pressedKeys.contains(KeyEvent.VK_D)) {
-            hero.speed = 5;
+            hero.speed = speed;
             hero.setDirection(Direction.EAST);
         } else {
             hero.speed = 0;
         }
 
         // Code du Boss
-
-        boss.setDirection(Direction.SOUTH);
-        boss.speed = 1;
+        boss.iSeeHero(hero);
+        if (boss.fight==true){
+            boss.speed = 3;
+            double d = boss.distance(hero);
+            boss.moveTo(hero.x,hero.y);
+        }
+        else {
+            boss.speed = 0;
+        }
 
     }
 

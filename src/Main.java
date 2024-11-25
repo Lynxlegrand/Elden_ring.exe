@@ -21,15 +21,15 @@ public class Main {
         displayZoneFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         displayZoneFrame.getContentPane().setBackground(Color.BLACK);
         displayZoneFrame.setIconImage(ImageIO.read(new File("./img/icon.png")));
-        displayZoneFrame.setUndecorated(true); // plein écran mais il faut d'abord créer un menu pour quitters
+        displayZoneFrame.setUndecorated(true);
 
         //Création du personnage
         DynamicSprite hero = new DynamicSprite(ImageIO.read(new File("./img/heroTileSheetLowRes.png")),200,300, 48,50);
         hero.setHitboxSize(48,50); // Réglage de la hitbox
 
         //Création du boss
-        DynamicSprite boss = new DynamicSprite(ImageIO.read(new File("./img/boss.png")),500,300, 48,50);
-        boss.setHitboxSize(48,50); // Réglage de la hitbox
+        PNJ boss = new PNJ(ImageIO.read(new File("./img/boss.png")),1000,300, 212,140);
+        boss.setHitboxSize(212,140); // Réglage de la hitbox
 
         //Initialisation des moteurs
         RenderEngine renderEngine = new RenderEngine(displayZoneFrame);

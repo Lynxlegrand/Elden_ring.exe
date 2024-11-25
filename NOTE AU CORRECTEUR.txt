@@ -1,6 +1,7 @@
 MODIFICATIONS APPORTEES SUR LE JEU : 
 
 - le héro s'arrête quand aucune touche n'est pressée
+- les touches sont zqsd
 - Le sprite du héros ne bouge plus quand il s'arrête
 - Possibilité de bouger en diagonale avec un sprite cohérent
 - Augmentation de la fréquence des timers pour un jeu plus nerveux
@@ -12,4 +13,6 @@ MODIFICATIONS APPORTEES SUR LE JEU :
 - création du système de points de vie (PV)
 - ajout d'un boss avec sa hitbox
 - ajout d'un code pour afficher les hitboxs
+- ajout de la méthode distance qui renvoie la distance entre 2 DynamicSprite
+- le héro sprinte si la touche maj gauche est pressée
 
